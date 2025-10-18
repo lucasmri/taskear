@@ -1,11 +1,15 @@
 // import { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
 import './App.css'
 
 export default function App() {
 
   return (
-    <>
-      <h1>Taskear</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
