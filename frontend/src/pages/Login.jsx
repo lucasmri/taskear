@@ -20,16 +20,18 @@ export default function Login() {
             <input type="password" placeholder="senha" id="login-password"/>
           </div>
 
-          <div className="form-group">
-            <input type="checkbox" id="remember-user"/>
-            <label htmlFor="remember-user">Lembrar usuário</label>
-          </div>
+          <div className="form-actions">
+            <div className="form-group">
+              <input type="checkbox" id="remember-user"/>
+              <label htmlFor="remember-user">Lembrar usuário</label>
+            </div>
 
-          <div className="form-group">
-            <Link to="/cadastro">Criar uma conta</Link>
+            <div className="form-group">
+              <Link to="/Cadastro">Criar uma conta</Link>
+              <button type="submit">Entrar</button>
+            </div>
           </div>
-
-          <button type="submit">Entrar</button>
+          
 
         </form>
 
