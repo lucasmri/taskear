@@ -1,33 +1,39 @@
 package com.messias.taskear.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "equipes_usuarios")
 public class EquipesUsuarios {
 
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "equipe_usuario_id")
+    private Integer equipe_usuario_id;
+
+    @ManyToOne
+    @JoinColumn(name = "equipe_id", nullable = false)
     private Equipes equipes;
+
     private Usuarios usuarios;
     private Papel papel;
 
     public EquipesUsuarios() {
     }
 
-    public EquipesUsuarios(Integer id, Equipes equipes, Usuarios usuarios, Papel papel) {
-        this.id = id;
+    public EquipesUsuarios(Integer equipe_usuario_id, Equipes equipes, Usuarios usuarios, Papel papel) {
+        this.equipe_usuario_id = equipe_usuario_id;
         this.equipes = equipes;
         this.usuarios = usuarios;
         this.papel = papel;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getEquipe_usuario_id() {
+        return equipe_usuario_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEquipe_usuario_id(Integer equipe_usuario_id) {
+        this.equipe_usuario_id = equipe_usuario_id;
     }
 
     public Equipes getEquipes() {
