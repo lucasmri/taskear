@@ -15,7 +15,12 @@ public class EquipesUsuarios {
     @JoinColumn(name = "equipe_id", nullable = false)
     private Equipes equipes;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuarios usuarios;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Papel papel;
 
     public EquipesUsuarios() {
