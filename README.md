@@ -72,6 +72,6 @@ Funcionalidades em progresso:
 
 ## Autor
 
-Lucas Messias
+Lucas Messias Ribeiro
 Estudante de Sistemas para Internet
 
