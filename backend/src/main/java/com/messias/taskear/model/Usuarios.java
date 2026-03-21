@@ -9,7 +9,7 @@ public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usuario_id")
-    private Integer id;
+    private Integer usuario_id;
 
     @Column(length = 100, nullable = false)
     private String nome;
@@ -23,19 +23,19 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    public Usuarios(Integer id, String nome, String email, String senhaHash) {
-        this.id = id;
+    public Usuarios(Integer usuario_id, String nome, String email, String senhaHash) {
+        this.usuario_id = usuario_id;
         this.nome = nome;
         this.email = email;
         this.senhaHash = senhaHash;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUsuario_id() {
+        return usuario_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsuario_id(Integer usuario_id) {
+        this.usuario_id = usuario_id;
     }
 
     public String getNome() {
