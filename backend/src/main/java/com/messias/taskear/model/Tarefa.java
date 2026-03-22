@@ -114,11 +114,11 @@ public class Tarefa {
         this.dataConfirmacao = dataConfirmacao;
     }
 
-    public EquipeUsuario getEquipesUsuarios() {
+    public EquipeUsuario getEquipeUsuario() {
         return equipeUsuario;
     }
 
-    public void setEquipesUsuarios(EquipeUsuario equipeUsuario) {
+    public void setEquipeUsuario(EquipeUsuario equipeUsuario) {
         this.equipeUsuario = equipeUsuario;
     }
 
