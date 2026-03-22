@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuarios {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usuario_id")
-    private Integer usuario_id;
+    private Integer usuarioId;
 
     @Column(length = 100, nullable = false)
     private String nome;
@@ -20,22 +20,22 @@ public class Usuarios {
     @Column(name = "senha_hash", length = 255, nullable = false)
     private String senhaHash;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(Integer usuario_id, String nome, String email, String senhaHash) {
-        this.usuario_id = usuario_id;
+    public Usuario(Integer usuarioId, String nome, String email, String senhaHash) {
+        this.usuarioId = usuarioId;
         this.nome = nome;
         this.email = email;
         this.senhaHash = senhaHash;
     }
 
-    public Integer getUsuario_id() {
-        return usuario_id;
+    public Integer getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(Integer usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public String getNome() {

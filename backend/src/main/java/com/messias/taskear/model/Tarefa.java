@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tarefas")
-public class Tarefas {
+public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tarefa_id")
-    private Integer tarefa_id;
+    private Integer tarefaId;
 
     @Column(name = "titulo", nullable = false, length = 100)
     private String titulo;
@@ -24,7 +24,7 @@ public class Tarefas {
     private StatusTarefa status = StatusTarefa.pendente;
 
     @Column(name = "email_usuario_afetado", length = 150)
-    private String email_usuario_afetado;
+    private String emailUsuarioAfetado;
 
     @Column(name = "confirmacao")
     private Boolean confirmacao = false;
@@ -34,36 +34,36 @@ public class Tarefas {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "equipes_usuarios")
-    private EquipesUsuarios equipesUsuarios;
+    private EquipeUsuario equipeUsuario;
 
     @Column(name = "data_criacao", updatable = false, insertable = false)
-    private LocalDateTime data_criacao;
+    private LocalDateTime dataCriacao;
 
     @Column(name = "data_conclusao")
-    private LocalDateTime data_conclusao;
+    private LocalDateTime dataConclusao;
 
-    public Tarefas() {
+    public Tarefa() {
     }
 
-    public Tarefas(Integer tarefa_id, String titulo, String descricao, StatusTarefa status, String email_usuario_afetado, Boolean confirmacao, LocalDateTime dataConfirmacao, EquipesUsuarios equipesUsuarios, LocalDateTime data_criacao, LocalDateTime data_conclusao) {
-        this.tarefa_id = tarefa_id;
+    public Tarefa(Integer tarefaId, String titulo, String descricao, StatusTarefa status, String emailUsuarioAfetado, Boolean confirmacao, LocalDateTime dataConfirmacao, EquipeUsuario equipeUsuario, LocalDateTime dataCriacao, LocalDateTime dataConclusao) {
+        this.tarefaId = tarefaId;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
-        this.email_usuario_afetado = email_usuario_afetado;
+        this.emailUsuarioAfetado = emailUsuarioAfetado;
         this.confirmacao = confirmacao;
         this.dataConfirmacao = dataConfirmacao;
-        this.equipesUsuarios = equipesUsuarios;
-        this.data_criacao = data_criacao;
-        this.data_conclusao = data_conclusao;
+        this.equipeUsuario = equipeUsuario;
+        this.dataCriacao = dataCriacao;
+        this.dataConclusao = dataConclusao;
     }
 
-    public Integer getTarefa_id() {
-        return tarefa_id;
+    public Integer getTarefaId() {
+        return tarefaId;
     }
 
-    public void setTarefa_id(Integer tarefa_id) {
-        this.tarefa_id = tarefa_id;
+    public void setTarefaId(Integer tarefaId) {
+        this.tarefaId = tarefaId;
     }
 
     public String getTitulo() {
@@ -90,12 +90,12 @@ public class Tarefas {
         this.status = status;
     }
 
-    public String getEmail_usuario_afetado() {
-        return email_usuario_afetado;
+    public String getEmailUsuarioAfetado() {
+        return emailUsuarioAfetado;
     }
 
-    public void setEmail_usuario_afetado(String email_usuario_afetado) {
-        this.email_usuario_afetado = email_usuario_afetado;
+    public void setEmailUsuarioAfetado(String emailUsuarioAfetado) {
+        this.emailUsuarioAfetado = emailUsuarioAfetado;
     }
 
     public Boolean getConfirmacao() {
@@ -114,27 +114,27 @@ public class Tarefas {
         this.dataConfirmacao = dataConfirmacao;
     }
 
-    public EquipesUsuarios getEquipesUsuarios() {
-        return equipesUsuarios;
+    public EquipeUsuario getEquipesUsuarios() {
+        return equipeUsuario;
     }
 
-    public void setEquipesUsuarios(EquipesUsuarios equipesUsuarios) {
-        this.equipesUsuarios = equipesUsuarios;
+    public void setEquipesUsuarios(EquipeUsuario equipeUsuario) {
+        this.equipeUsuario = equipeUsuario;
     }
 
-    public LocalDateTime getData_criacao() {
-        return data_criacao;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setData_criacao(LocalDateTime data_criacao) {
-        this.data_criacao = data_criacao;
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
-    public LocalDateTime getData_conclusao() {
-        return data_conclusao;
+    public LocalDateTime getDataConclusao() {
+        return dataConclusao;
     }
 
-    public void setData_conclusao(LocalDateTime data_conclusao) {
-        this.data_conclusao = data_conclusao;
+    public void setDataConclusao(LocalDateTime dataConclusao) {
+        this.dataConclusao = dataConclusao;
     }
 }

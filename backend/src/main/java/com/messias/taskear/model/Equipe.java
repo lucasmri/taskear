@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "equipes")
-public class Equipes {
+public class Equipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "equipe_id")
-    private Integer equipe_id;
+    private Integer equipeId;
 
     @Column(length = 40, nullable = false)
     private String nome;
@@ -17,21 +17,21 @@ public class Equipes {
     @Column(length = 255, nullable = false)
     private String descricao;
 
-    public Equipes() {
+    public Equipe() {
     }
 
-    public Equipes(Integer equipe_id, String nome, String descricao) {
-        this.equipe_id = equipe_id;
+    public Equipe(Integer equipeId, String nome, String descricao) {
+        this.equipeId = equipeId;
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    public Integer getEquipe_id() {
-        return equipe_id;
+    public Integer getEquipeId() {
+        return equipeId;
     }
 
-    public void setEquipe_id(Integer equipe_id) {
-        this.equipe_id = equipe_id;
+    public void setEquipeId(Integer equipeId) {
+        this.equipeId = equipeId;
     }
 
     public String getNome() {
