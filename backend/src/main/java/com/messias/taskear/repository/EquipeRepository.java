@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface EquipesRepository extends JpaRepository<Equipe, Integer> {
+public interface EquipeRepository extends JpaRepository<Equipe, Integer> {
     //Evitar NullPointerException
     Optional<Equipe> findByNome(String nome);
 }

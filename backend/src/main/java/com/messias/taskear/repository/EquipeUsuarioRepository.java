@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EquipesUsuariosRepository extends JpaRepository<EquipeUsuario, Integer> {
+public interface EquipeUsuarioRepository extends JpaRepository<EquipeUsuario, Integer> {
 
     // Lista nunca retorna Null
     List<EquipeUsuario> findByUsuarioUsuarioId(Integer usuarioId);

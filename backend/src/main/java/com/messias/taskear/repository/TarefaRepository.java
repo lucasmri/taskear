@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface TarefasRepository extends JpaRepository<Tarefa, Integer> {
+public interface TarefaRepository extends JpaRepository<Tarefa, Integer> {
 
     // Nome do metodo == nome do atributo da classe + seu identificador (A JPA quebra o camelCase e identifica o atributo)
     List<Tarefa> findByEquipeUsuarioEquipeUsuarioId(Integer equipeUsuarioId);
