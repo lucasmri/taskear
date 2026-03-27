@@ -15,20 +15,37 @@ public class UsuarioService {
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
-
-    public Usuario salvarUsuario(Usuario usuario) {
+    
+   public Usuario salvarUsuario(Usuario usuario) {
         if (usuarioRepository.existsByEmail(usuario.getEmail())) {
             throw new RuntimeException("E-mail já cadastrado");
         }
         return usuarioRepository.save(usuario);
-    }
+   }
 
-    public List<Usuario> listarUsuarios() {
+   public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
-    }
+   }
 
-    public Usuario listarPorId(Integer id) {
+   public Usuario listarUsuario(Integer id) {
         return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-    }
+   }
+
+   public Usuario atualizarUsuario(Integer id, Usuario usuarioAtualizado) {
+
+        Usuario usuario = listarUsuario(id);
+
+        usuario.setEmail(usuarioAtualizado.getEmail());
+        usuario.setNome(usuarioAtualizado.getNome());
+
+        return usuarioRepository.save(usuario);
+   }
+
+   public void deletarUsuario(Integer id) {
+
+        Usuario usuario = listarUsuario(id);
+
+        usuarioRepository.delete(usuario);
+   }
 
 }
