@@ -50,6 +50,7 @@ public class EquipeService {
     }
 
     public Equipe atualizarEquipe(Integer id, Equipe equipeAtualizada) {
+
         Equipe equipe = listarEquipe(id);
 
         equipe.setNome(equipeAtualizada.getNome());
@@ -59,6 +60,7 @@ public class EquipeService {
     }
 
     public void deletarEquipe(Integer id) {
+
         Equipe equipe = listarEquipe(id);
 
         equipeRepository.delete(equipe);
