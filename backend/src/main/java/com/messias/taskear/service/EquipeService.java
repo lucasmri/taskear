@@ -9,6 +9,8 @@ import com.messias.taskear.repository.EquipeUsuarioRepository;
 import com.messias.taskear.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EquipeService {
 
@@ -23,9 +25,9 @@ public class EquipeService {
         this.equipeUsuarioRepository = equipeUsuarioRepository;
     }
 
-    public Equipe criarEquipe(Integer usuarioId, Equipe equipe) {
+    public Equipe criarEquipe(Integer id, Equipe equipe) {
 
-        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         Equipe equipeSalva = equipeRepository.save(equipe);
 
@@ -35,7 +37,30 @@ public class EquipeService {
         vinculo.setPapel(Papel.lider);
 
         equipeUsuarioRepository.save(vinculo);
-        
+
         return equipeSalva;
+    }
+
+    public List<Equipe> listarEquipes() {
+        return equipeRepository.findAll();
+    }
+
+    public Equipe listarEquipe(Integer id) {
+        return equipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
+    }
+
+    public Equipe atualizarEquipe(Integer id, Equipe equipeAtualizada) {
+        Equipe equipe = listarEquipe(id);
+
+        equipe.setNome(equipeAtualizada.getNome());
+        equipe.setDescricao(equipeAtualizada.getDescricao());
+
+        return equipeRepository.save(equipe);
+    }
+
+    public void deletarEquipe(Integer id) {
+        Equipe equipe = listarEquipe(id);
+
+        equipeRepository.delete(equipe);
     }
 }
