@@ -1,5 +1,9 @@
 package com.messias.taskear.service;
 
+import com.messias.taskear.model.Equipe;
+import com.messias.taskear.model.EquipeUsuario;
+import com.messias.taskear.model.Papel;
+import com.messias.taskear.model.Usuario;
 import com.messias.taskear.repository.EquipeRepository;
 import com.messias.taskear.repository.EquipeUsuarioRepository;
 import com.messias.taskear.repository.UsuarioRepository;
@@ -19,5 +23,19 @@ public class EquipeService {
         this.equipeUsuarioRepository = equipeUsuarioRepository;
     }
 
-    
+    public Equipe criarEquipe(Integer usuarioId, Equipe equipe) {
+
+        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        Equipe equipeSalva = equipeRepository.save(equipe);
+
+        EquipeUsuario vinculo = new EquipeUsuario();
+        vinculo.setEquipe(equipeSalva);
+        vinculo.setUsuario(usuario);
+        vinculo.setPapel(Papel.lider);
+
+        equipeUsuarioRepository.save(vinculo);
+        
+        return equipeSalva;
+    }
 }

@@ -41,19 +41,19 @@ public class EquipeUsuario {
         this.equipeUsuarioId = equipeUsuarioId;
     }
 
-    public Equipe getEquipes() {
+    public Equipe getEquipe() {
         return equipe;
     }
 
-    public void setEquipes(Equipe equipe) {
+    public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
 
-    public Usuario getUsuarios() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuarios(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
