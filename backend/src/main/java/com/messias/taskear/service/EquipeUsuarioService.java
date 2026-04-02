@@ -63,7 +63,7 @@ public class EquipeUsuarioService {
 
     public void removerUsuario(Integer liderId, Integer equipeUsuarioId) {
 
-        // Ver se a equipe existe
+        // Ver se a equipe existe/vinculo
         EquipeUsuario vinculo = equipeUsuarioRepository.findById(equipeUsuarioId).orElseThrow(() -> new RuntimeException("Vínculo não encontrado"));
 
         // Ver se o líder está na equipe
