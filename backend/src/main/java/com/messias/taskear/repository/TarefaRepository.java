@@ -13,5 +13,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Integer> {
     // Nome do metodo == nome do atributo da classe + seu identificador (A JPA quebra o camelCase e identifica o atributo)
     List<Tarefa> findByEquipeUsuarioEquipeUsuarioId(Integer equipeUsuarioId);
 
+    List<Tarefa> findByEquipeUsuarioUsuarioUsuarioId(Integer usuarioUsuarioId);
+
     List<Tarefa> findByStatus(StatusTarefa status);
 }
