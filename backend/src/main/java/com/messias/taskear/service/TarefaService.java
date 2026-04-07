@@ -39,7 +39,7 @@ public class TarefaService {
     }
 
     public Tarefa listarPorId(Integer id) {
-        return tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
     }
 
     public Tarefa concluir(Integer tarefaId, String emailUsuarioAfetado) {

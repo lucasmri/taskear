@@ -9,7 +9,6 @@ import com.messias.taskear.repository.EquipeUsuarioRepository;
 import com.messias.taskear.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.List;
 
 @Service
@@ -35,7 +34,7 @@ public class EquipeUsuarioService {
             throw new RuntimeException("Apenas o líder da equipe pode adicionar usuários");
         }
 
-        //Ver se o usuário já está na equipe
+        // Ver se o usuário já está na equipe
         boolean usuarioExistente = equipeUsuarioRepository.existsByUsuarioUsuarioIdAndEquipeEquipeId(usuarioId, equipeId);
 
         if (usuarioExistente) {
