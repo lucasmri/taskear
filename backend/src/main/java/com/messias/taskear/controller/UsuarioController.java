@@ -2,10 +2,7 @@ package com.messias.taskear.controller;
 
 import com.messias.taskear.model.Usuario;
 import com.messias.taskear.service.UsuarioService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,10 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public Usuario listarUsuario(@PathVariable Integer id) {
         return usuarioService.listarUsuario(id);
+    }
+
+    @PostMapping
+    public Usuario salvarUsuario(@RequestBody Usuario usuario) {
+        return usuarioService.salvarUsuario(usuario);
     }
 }
