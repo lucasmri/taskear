@@ -2,7 +2,9 @@ package com.messias.taskear.service;
 
 import com.messias.taskear.model.Usuario;
 import com.messias.taskear.repository.UsuarioRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class UsuarioService {
     
    public Usuario salvarUsuario(Usuario usuario) {
         if (usuarioRepository.existsByEmail(usuario.getEmail())) {
-            throw new RuntimeException("E-mail já cadastrado");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "E-mail já cadastrado");
         }
         return usuarioRepository.save(usuario);
    }
@@ -28,7 +30,7 @@ public class UsuarioService {
    }
 
    public Usuario listarUsuario(Integer id) {
-        return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        return usuarioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
    }
 
    public Usuario atualizarUsuario(Integer id, Usuario usuarioAtualizado) {
