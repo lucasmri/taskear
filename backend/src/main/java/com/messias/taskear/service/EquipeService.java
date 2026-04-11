@@ -7,7 +7,9 @@ import com.messias.taskear.model.Usuario;
 import com.messias.taskear.repository.EquipeRepository;
 import com.messias.taskear.repository.EquipeUsuarioRepository;
 import com.messias.taskear.repository.UsuarioRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class EquipeService {
 
     public Equipe criarEquipe(Integer id, Equipe equipe) {
 
-        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
 
         Equipe equipeSalva = equipeRepository.save(equipe);
 
@@ -46,7 +48,7 @@ public class EquipeService {
     }
 
     public Equipe listarEquipe(Integer id) {
-        return equipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
+        return equipeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipe não encontrada"));
     }
 
     public Equipe atualizarEquipe(Integer id, Equipe equipeAtualizada) {
