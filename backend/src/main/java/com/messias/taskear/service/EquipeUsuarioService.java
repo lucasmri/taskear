@@ -7,7 +7,9 @@ import com.messias.taskear.model.Usuario;
 import com.messias.taskear.repository.EquipeRepository;
 import com.messias.taskear.repository.EquipeUsuarioRepository;
 import com.messias.taskear.repository.UsuarioRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -28,24 +30,24 @@ public class EquipeUsuarioService {
     public EquipeUsuario adicionarUsuario(Integer liderId, Integer equipeId, Integer usuarioId) {
 
         EquipeUsuario lider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(liderId, equipeId)
-                .orElseThrow(() -> new RuntimeException("Usuário não pertence à equipe"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não pertence à equipe"));
 
         if (lider.getPapel() != Papel.lider) {
-            throw new RuntimeException("Apenas o líder da equipe pode adicionar usuários");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Apenas o líder da equipe pode adicionar usuários");
         }
 
         // Ver se o usuário já está na equipe
         boolean usuarioExistente = equipeUsuarioRepository.existsByUsuarioUsuarioIdAndEquipeEquipeId(usuarioId, equipeId);
 
         if (usuarioExistente) {
-            throw new RuntimeException("Usuário já pertence à equipe");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Usuário já pertence à equipe");
         }
 
         // Usuário que quero inserir
-        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
 
         // Equipe que quero inserir o usuário
-        Equipe equipe = equipeRepository.findById(equipeId).orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
+        Equipe equipe = equipeRepository.findById(equipeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipe não encontrada"));
 
         EquipeUsuario vinculo = new EquipeUsuario();
         vinculo.setUsuario(usuario);
@@ -63,15 +65,21 @@ public class EquipeUsuarioService {
     public void removerUsuario(Integer liderId, Integer equipeUsuarioId) {
 
         // Ver se a equipe existe/vinculo
-        EquipeUsuario vinculo = equipeUsuarioRepository.findById(equipeUsuarioId).orElseThrow(() -> new RuntimeException("Vínculo não encontrado"));
+        EquipeUsuario vinculo = equipeUsuarioRepository.findById(equipeUsuarioId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
 
         // Ver se o líder está na equipe
         EquipeUsuario lider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(liderId, vinculo.getEquipe().getEquipeId())
-                .orElseThrow(() -> new RuntimeException(("Este usuário líder não pertence à equipe")));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Este usuário não pertence à equipe"));
 
-        // Ver se o líder é lider
+        // Ver se o usuário é lider
         if (lider.getPapel() != Papel.lider) {
-            throw new RuntimeException("Apenas o líder da equipe pode remover usuários");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Apenas o líder da equipe pode remover usuários");
+        }
+
+        // O líder não pode ser removido da equipe
+        if (vinculo.getEquipeUsuarioId() == equipeUsuarioId) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "O líder não pode se remover da equipe");
         }
 
         equipeUsuarioRepository.delete(vinculo);
