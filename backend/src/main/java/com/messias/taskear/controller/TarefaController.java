@@ -31,5 +31,24 @@ public class TarefaController {
         return tarefaService.criarTarefa(usuarioId, equipeId, tarefa);
     }
 
+    @GetMapping("/equipe/{equipeId}")
+    public List<Tarefa> listarPorEquipe(@PathVariable Integer equipeId) {
+        return tarefaService.listarPorEquipe(equipeId);
+    }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Tarefa> listarPorUsuario(@PathVariable Integer usuarioId) {
+        return tarefaService.listarPorUsuario(usuarioId);
+    }
+
+    @PutMapping("/confirmar/{tarefaId}")
+    public Tarefa confirmar(@PathVariable Integer tarefaId) {
+        return tarefaService.confirmar(tarefaId);
+    }
+
+    @PutMapping("/concluir/{tarefaId}")
+    public Tarefa concluir(@PathVariable Integer tarefaId, @RequestParam String email) {
+        return tarefaService.concluir(tarefaId, email);
+    }
 
 }
