@@ -6,7 +6,7 @@ export default function Cadastro() {
 
       <div className="cadastro-container">
 
-        <div id="cadastro-form">
+        <form id="cadastro-form">
 
           <h2>Cadastro</h2>
 
@@ -35,7 +35,7 @@ export default function Cadastro() {
             </div>
           </div>
 
-        </div>
+        </form>
 
       </div>
 

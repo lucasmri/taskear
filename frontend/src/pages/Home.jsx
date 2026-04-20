@@ -9,6 +9,7 @@ export default function Home() {
       <main className="teams-section">
 
         <div className="teams-header">
+
           <div className="teams-group">
             <h2>Minhas equipes</h2>
           </div>
@@ -16,6 +17,7 @@ export default function Home() {
           <div className="teams-actions">
             <button>Criar uma equipe</button>
           </div>
+          
         </div>
 
         <div className="teams-list">
