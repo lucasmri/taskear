@@ -40,17 +40,18 @@ export default function Login() {
   }
 
   return (
-    <div id="login-container">
+    <div className="login-container">
 
-      <div id="card">
+      <div className="card">
+
         <div className="welcome-msg">
-            <h2>Bem-vindo de volta!</h2>
-            <p>Você pode acessar sua conta ou criar uma caso não tenha.</p>
+          <h2>Bem-vindo de volta!</h2>
+          <p>Você pode acessar sua conta ou criar uma caso não tenha.</p>
         </div>
 
-        <div id="login-form">
+        <div className="login-form">
 
-          <form id="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
 
             <h2>Entrar</h2>
 
@@ -77,17 +78,21 @@ export default function Login() {
             </div>
 
             <div className="form-actions-login">
+
               <div className="form-group-login">
                 <button type="submit" className="login-btn">Entrar</button>
-                <Link to="/Cadastro" className="link">Criar uma nova <span>conta</span></Link>
+                <Link to="/Cadastro" className="link">Criar uma nova <span className="span_decorator">conta</span></Link>
               </div>
+              
             </div>
 
           </form>
+
         </div>
+
       </div>
-      
-        <img src="https://i.imgur.com/qR6w9dw_d.webp?maxwidth=760&fidelity=grand" alt="Logo - Taskear" className="logo-taskear" />
+
+      <img src="https://i.imgur.com/qR6w9dw_d.webp?maxwidth=760&fidelity=grand" alt="Logo - Taskear" className="logo-taskear" />
 
     </div>
   )

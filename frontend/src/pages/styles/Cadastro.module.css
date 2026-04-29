@@ -7,7 +7,7 @@
   padding: 0px;
 }
 
-.login-container {
+.cadastro_container {
   background-color: #0e46a1;
   min-height: 100vh;
   display: flex;
@@ -27,20 +27,21 @@
   box-shadow: 0px 32px 80px rgba(0,0,0,.35);
 }
 
-.welcome-msg {
+.welcome_msg {
   background: linear-gradient(to bottom, #1f60b5, #0b319c);
-  border-radius: 20px 0px 0px 20px;
-  flex: 1;
+  border-radius: 0px 20px 20px 0px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   padding: 56px 52px;
   min-height: 560px;
+  color: white;
 }
 
-.login-form {
+.cadastro_form {
   background-color: #f5f7fa;
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 20px 0px 0px 20px;
   width: min(440px, 100%);
   display: flex;
   flex-direction: column;
@@ -49,7 +50,7 @@
   min-height: 560px;
 }
 
-.welcome-msg h2 {
+.welcome_msg h2 {
   color: #f5f7fa;
   font-size: 38px;
   font-weight: 600;
@@ -57,15 +58,15 @@
   margin-bottom: 18px;
 }
 
-.welcome-msg p {
+.welcome_msg p {
   color: #f5f7fa;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.6;
-  max-width: 320px;
+  max-width: 430px;
 }
 
-.form h2 {
+.cadastro_form h2 {
   color: #242833;
   font-size: 32px;
   font-weight: 600;
@@ -86,8 +87,7 @@
 }
 
 .form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="text"] {
+.form-group input[type="password"] {
   height: 50px;
   border: 2px solid #989ea6;
   border-radius: 13px;
@@ -147,7 +147,7 @@ form-group-password label {
   margin-bottom: 0;
 }
 
-.form-actions .link {
+.link {
   color: #989ea6;
   font-size: 13px;
   text-decoration: none;
@@ -158,14 +158,14 @@ form-group-password label {
   color: #1f60b5;
 }
 
-.form-actions-login {
+.form_action_cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.login-btn {
+.cadastro_btn {
   width: 100%;
   height: 54px;
   border: none;
@@ -181,16 +181,16 @@ form-group-password label {
   transition: opacity 0.2s, transform 0.15s;
 }
 
-.login-btn:hover {
+.cadastro_btn:hover {
   opacity: 0.88;
   transform: translateY(-1px);
 }
 
-.login-btn:active {
+.cadastro_btn:active {
   transform: translateY(0);
 }
 
-.form-group-login {
+.form_group_cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,12 +203,12 @@ form-group-password label {
   text-decoration: none;
 }
 
-.span_decorator {
+.form-group-login > .link span {
   color: #5fa0f5;
   font-weight: 500;
 }
 
-.span_decorator:hover {
+.form-group-login > .link span:hover {
   text-decoration: underline;
 }
 
