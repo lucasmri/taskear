@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Poppins", "sans-serif";
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.aside {
+  width: 250px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1f60b5, #0b319c);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.aside_user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 24px;
+}
+
+.greeting {
+  font-size: 20px;
+  font-weight: 500;
+  color: #F5F7FA;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 400;
+  color: #CED3D9;
+}
+
+.aside_hr {
+  height: 1px;
+  background-color: #CED3D9;
+  margin: 0px 15px 20px
+}
+
+.aside_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0px 12px;
+  flex: 1;
+}
+
+.aside_nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #CED3D9;
+  font-style: 18px;
+  font-weight: 500;
+  transition: 0.15s;
+}
+
+.aside_nav a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.aside_logo {
+  padding: 25px 35px;
+}
+
+.aside_logout {
+  margin: 8px 16px 20px;
+}
+
+.aside_logout a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(to bottom, #363b47, #2a2c3b);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #F5F7FA;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.15s;
+}
+
+.aside_logout a:hover {
+  opacity: 0.85;
+}
