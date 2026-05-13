@@ -62,7 +62,7 @@ export default function Menu() {
       </div>
 
       <div className={styles.aside_logout}>
-        <Link to="/Home">
+        <Link to="/">
         <LogoutIcon style={{ color: "white", fontSize: 25 }}/>
         Sair</Link>
       </div>
