@@ -7,3 +7,113 @@
   padding: 0px;
 }
 
+.home_page {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.teams_section {
+  flex: 1;
+  padding: 50px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cards_status {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card_peding,
+.card_doing,
+.card_done {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+}
+
+.card_peding {
+  border-bottom: 10px solid #f2b718;
+  background-color: #fffef7;
+}
+
+.card_doing {
+  border-bottom: 10px solid #1f60b5;
+  background-color: #F7FBFF;
+}
+
+.card_done {
+  border-bottom: 10px solid #25703b;
+  background-color: #F7FFFA;
+}
+
+/* obs */
+.card_info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card_info_label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #474d59;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.card_info_value {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #0b0c12;
+  line-height: 1;
+}
+
+.teams_card {
+  background-color: #f7fbff;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border-bottom: 10px solid #1f60b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 48px 60px;
+  flex: 1;
+}
+
+.teams_card_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.teams_card_label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: #474d59;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.teams_card_value {
+  font-family: 'Inter', sans-serif;
+  font-size: 100px;
+  font-weight: 500;
+  color: #0b0c12;
+  line-height: 1;
+  text-align: center;
+}
