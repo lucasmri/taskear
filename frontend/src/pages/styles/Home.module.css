@@ -14,7 +14,7 @@
   flex-direction: row;
 }
 
-.teams_section {
+.dashboard_section {
   flex: 1;
   padding: 50px 40px 40px;
   display: flex;
@@ -79,7 +79,7 @@
   line-height: 1;
 }
 
-.teams_card {
+.dashboard_card {
   background-color: #f7fbff;
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -92,14 +92,14 @@
   flex: 1;
 }
 
-.teams_card_info {
+.dashboard_card_info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 }
 
-.teams_card_label {
+.dashboard_card_label {
   font-family: 'Poppins', sans-serif;
   font-size: 36px;
   font-weight: 500;
@@ -109,7 +109,7 @@
   text-align: center;
 }
 
-.teams_card_value {
+.dashboard_card_value {
   font-family: 'Inter', sans-serif;
   font-size: 100px;
   font-weight: 500;

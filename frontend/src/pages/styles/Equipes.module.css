@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Poppins", "sans-serif";
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.equipes_page {
+  background-color: #f5f7fa;
+  display: flex;
+  
+}
+
+.teams_section {
+  width: 100%;
+  margin: 35px;
+  
+}
+
+.container {
+  width: 100%;
+  background: #F5F7FA;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #F5F7FA;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.topbar {
+  background: #242833;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  gap: 15px;
+}
+
+.btn_create {
+  display: flex;
+  gap: 10px;
+  background-color: #1565d8;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  align-items: center;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn_deco {
+  font-size: 35px;
+  line-height: 0;
+  font-weight: 300;
+}
+
+.btn_create:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn_create:active {
+  transform: translateY(0);
+}
+
+.table_header {
+  background-color: #363B47;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr 1fr 1fr;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.table_row {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 100px 0.7fr 1fr 1fr 1.2fr;
+  gap: 70px;
+  align-items: center;
+  background-color: #E6EAF0;
+  border-left: 7px solid #1F60B5;
+  min-height: 72px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  
+}
+
+.table_row_options {
+  text-align: center;
+  color: #9da3ad;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  line-height: 10px;
+  cursor: pointer;
+  transition: .3s;
+  letter-spacing: 2px;;
+}
+
+.table_row_options:active {
+  transform: translateY(-1px);
+}
+
+.table_row_team_name {
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #363B47;
+}
+
+.table_row_info {
+  text-align: center;
+}
+
+.table_row_info_value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #242833;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.table_row_info_label {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #363B47;
+  letter-spacing: 1px;
+}
+
+.table_row_actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actions_btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.actions_btn:hover {
+  opacity: 0.88;
+}
+
+.actions_btn:active {
+  transform: translateY(-1px);
+}
+
+.actions_btn_acess {
+  background: #1565d8;
+}
+
+.actions_btn_edit {
+  background: #e3ad16;
+
+}
+
+.actions_btn_delete {
+  background: #c72d22;
+}
+
+.table_footer {
+  height: 40px;
+  background: #242833;
+}

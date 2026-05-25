@@ -35,7 +35,7 @@ export default function Menu() {
             Home</NavLink>
           </li>
           <li>
-            <NavLink to="/Home">
+            <NavLink to="/Equipes">
             <GroupsIcon style={{ color: "#F5F7FA", fontSize: 32 }}/>
             Equipes</NavLink>
           </li>

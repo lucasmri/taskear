@@ -11,7 +11,7 @@ export default function Home() {
 
       <Menu />
 
-      <main className={styles.teams_section}>
+      <main className={styles.dashboard_section}>
 
         <div className={styles.cards_status}>
           
@@ -41,11 +41,11 @@ export default function Home() {
 
         </div>
 
-        <div className={styles.teams_card}>
+        <div className={styles.dashboard_card}>
           <GroupsIcon style={{ color: "#1F60B5", fontSize: 280 }}/>
-          <div className={styles.teams_card_info}>
-            <p className={styles.teams_card_label}>Minhas equipes</p>
-            <p className={styles.teams_card_value}>0</p>
+          <div className={styles.dashboard_card_info}>
+            <p className={styles.dashboard_card_label}>Minhas equipes</p>
+            <p className={styles.dashboard_card_value}>0</p>
           </div>
         </div>
 
