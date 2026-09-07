@@ -1,7 +1,7 @@
 package com.messias.taskear.controller;
 
 import com.messias.taskear.dto.LoginDTO;
-import com.messias.taskear.model.Usuario;
+import com.messias.taskear.dto.LoginResponseDTO;
 import com.messias.taskear.service.LoginService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +19,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public Usuario login(@RequestBody LoginDTO loginDTO) {
+    public LoginResponseDTO login(@RequestBody LoginDTO loginDTO) {
         return loginService.login(loginDTO);
     }
 }

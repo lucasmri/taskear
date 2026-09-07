@@ -1,5 +1,6 @@
 package com.messias.taskear.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +12,14 @@ public class Usuario {
     @Column(name = "usuario_id")
     private Integer usuarioId;
 
-    @Column(length = 100, nullable = false)
+
+    @Column(length = 150, nullable = false)
     private String nome;
 
     @Column(length = 150, nullable = false, unique = true)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "senha_hash", length = 255, nullable = false)
     private String senhaHash;
 

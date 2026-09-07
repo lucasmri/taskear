@@ -15,5 +15,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Integer> {
 
     List<Tarefa> findByEquipeUsuarioUsuarioUsuarioId(Integer usuarioUsuarioId);
 
+    List<Tarefa> findByEquipeUsuarioEquipeEquipeIdIn(List<Integer> equipeIds);
+
     List<Tarefa> findByStatus(StatusTarefa status);
 }

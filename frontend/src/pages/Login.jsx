@@ -30,8 +30,18 @@ export default function Login() {
         return;
       }
 
-      const usuario = await res.json();
-      localStorage.setItem("usuario", JSON.stringify(usuario));
+      const dados = await res.json();
+
+      localStorage.setItem("token", dados.token);
+
+      localStorage.setItem(
+        "usuario",
+        JSON.stringify({
+          usuarioId: dados.usuarioId,
+          nome: dados.nome,
+          email: dados.email,
+        })
+      );
 
       navigate("/Home");
     } catch {
@@ -63,18 +73,6 @@ export default function Login() {
             <div className="form-group">
               <label htmlFor="login-password">Senha</label>
               <input type="password" placeholder="sua senha" id="login-password" name="senha" value={form.senha} onChange={handleSenhaChange} required />
-            </div>
-
-            <div className="form-actions">
-
-              <div className="form-group-password">
-                <input type="checkbox" id="remember-user" />
-                <label htmlFor="remember-user">Lembrar usuário</label>
-              </div>
-
-              <div className="form-group">
-                <Link to="/" className="link">Esqueci minha senha!</Link>
-              </div>
             </div>
 
             <div className="form-actions-login">

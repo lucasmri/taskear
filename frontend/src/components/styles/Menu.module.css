@@ -75,7 +75,10 @@
   margin: 8px 16px 20px;
 }
 
-.aside_logout a {
+.aside_logout button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -89,6 +92,6 @@
   transition: 0.15s;
 }
 
-.aside_logout a:hover {
+.aside_logout button:hover {
   opacity: 0.85;
 }

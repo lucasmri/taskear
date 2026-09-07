@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Cadastro() {
 
   const navigate = useNavigate();
-  const [form, setForm] = useState({ nome: "", email: "", senhaHash: "" });
+  const [form, setForm] = useState({ nome: "", email: "", senha: "" });
 
   function handleNomeChange(e) {
     setForm({ ...form, nome: e.target.value });
@@ -16,7 +16,7 @@ export default function Cadastro() {
   }
 
   function handleSenhaChange(e) {
-    setForm({ ...form, senhaHash: e.target.value });
+    setForm({ ...form, senha: e.target.value });
   }
 
   async function handleSubmit(e) {
@@ -60,7 +60,7 @@ export default function Cadastro() {
 
           <div className="form-group">
             <label htmlFor="cadastro-password">Senha</label>
-            <input type="password" placeholder="sua senha" id="cadastro-password" name="senhaHash" value={form.senhaHash} onChange={handleSenhaChange} required/>
+            <input type="password" placeholder="sua senha" id="cadastro-password" name="senha" value={form.senha} onChange={handleSenhaChange} required/>
           </div>
 
           <div className={styles.form_action_cadastro}>

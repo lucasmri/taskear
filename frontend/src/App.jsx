@@ -5,6 +5,9 @@ import './App.css'
 import Cadastro from './pages/Cadastro';
 import Home from './pages/Home';
 import Equipes from './pages/Equipes'
+import Perfil from './pages/Perfil';
+import Equipe from './pages/Equipe';
+import Historico from './pages/Historico';
 
 export default function App() {
 
@@ -15,6 +18,9 @@ export default function App() {
         <Route path="/Cadastro" element={<Cadastro/>}/>
         <Route path="/Home" element={<Home/>}/>
         <Route path="/Equipes" element={<Equipes/>}/>
+        <Route path="/Equipe" element={<Equipe/>}/>
+        <Route path="/Perfil" element={<Perfil/>}/>
+        <Route path="/Historico" element={<Historico/>}/>
       </Routes>
     </BrowserRouter>
   )

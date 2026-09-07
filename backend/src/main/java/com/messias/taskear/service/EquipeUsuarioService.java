@@ -27,30 +27,44 @@ public class EquipeUsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public EquipeUsuario adicionarUsuario(Integer liderId, Integer equipeId, Integer usuarioId) {
+    // Apenas o líder autenticado da equipe pode adicionar um usuário pelo e-mail.
+    // (Funcionalidade de convite/aceite fica para trabalhos futuros: por ora o
+    // usuário é inserido diretamente na equipe.)
+    public EquipeUsuario adicionarUsuarioPorEmail(String liderEmail, Integer equipeId, String emailConvidado) {
 
-        EquipeUsuario lider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(liderId, equipeId)
+        Usuario lider = usuarioRepository.findByEmail(liderEmail)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
+
+        EquipeUsuario vinculoLider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(lider.getUsuarioId(), equipeId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não pertence à equipe"));
 
-        if (lider.getPapel() != Papel.lider) {
+        if (vinculoLider.getPapel() != Papel.lider) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Apenas o líder da equipe pode adicionar usuários");
         }
 
-        // Ver se o usuário já está na equipe
-        boolean usuarioExistente = equipeUsuarioRepository.existsByUsuarioUsuarioIdAndEquipeEquipeId(usuarioId, equipeId);
+        if (emailConvidado == null || emailConvidado.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Informe o e-mail do usuário a ser adicionado");
+        }
+
+        Usuario usuarioConvidado = usuarioRepository.findByEmail(emailConvidado.trim())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhum usuário cadastrado com este e-mail"));
+
+        if (usuarioConvidado.getUsuarioId().equals(lider.getUsuarioId())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você já é o líder desta equipe");
+        }
+
+        boolean usuarioExistente = equipeUsuarioRepository
+                .existsByUsuarioUsuarioIdAndEquipeEquipeId(usuarioConvidado.getUsuarioId(), equipeId);
 
         if (usuarioExistente) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Usuário já pertence à equipe");
         }
 
-        // Usuário que quero inserir
-        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
-
-        // Equipe que quero inserir o usuário
-        Equipe equipe = equipeRepository.findById(equipeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipe não encontrada"));
+        Equipe equipe = equipeRepository.findById(equipeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipe não encontrada"));
 
         EquipeUsuario vinculo = new EquipeUsuario();
-        vinculo.setUsuario(usuario);
+        vinculo.setUsuario(usuarioConvidado);
         vinculo.setEquipe(equipe);
         vinculo.setPapel(Papel.tecnico);
 
@@ -62,24 +76,44 @@ public class EquipeUsuarioService {
         return equipeUsuarioRepository.findByEquipeEquipeId(equipeId);
     }
 
-    public void removerUsuario(Integer liderId, Integer equipeUsuarioId) {
+    // Apenas o líder autenticado da equipe pode remover um membro
+    public void removerUsuario(String liderEmail, Integer equipeUsuarioId) {
 
-        // Ver se a equipe existe/vinculo
+        // Ver se o vínculo (membro a ser removido) existe
         EquipeUsuario vinculo = equipeUsuarioRepository.findById(equipeUsuarioId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
 
-        // Ver se o líder está na equipe
-        EquipeUsuario lider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(liderId, vinculo.getEquipe().getEquipeId())
+        Usuario lider = usuarioRepository.findByEmail(liderEmail)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
+
+        // Ver se quem está removendo é líder da equipe
+        EquipeUsuario vinculoLider = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(lider.getUsuarioId(), vinculo.getEquipe().getEquipeId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Este usuário não pertence à equipe"));
 
-        // Ver se o usuário é lider
-        if (lider.getPapel() != Papel.lider) {
+        if (vinculoLider.getPapel() != Papel.lider) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Apenas o líder da equipe pode remover usuários");
         }
 
-        // O líder não pode ser removido da equipe
-        if (vinculo.getEquipeUsuarioId() == equipeUsuarioId) {
+        // O líder não pode remover a si mesmo da equipe
+        if (vinculo.getUsuario().getUsuarioId().equals(lider.getUsuarioId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "O líder não pode se remover da equipe");
+        }
+
+        equipeUsuarioRepository.delete(vinculo);
+    }
+
+    // Um usuário técnico pode sair de uma equipe da qual faz parte.
+    // O líder não pode sair da própria equipe, apenas excluí-la.
+    public void sairDaEquipe(String email, Integer equipeId) {
+
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
+
+        EquipeUsuario vinculo = equipeUsuarioRepository.findByUsuarioUsuarioIdAndEquipeEquipeId(usuario.getUsuarioId(), equipeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Você não pertence a esta equipe"));
+
+        if (vinculo.getPapel() == Papel.lider) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "O líder não pode sair da equipe, apenas excluí-la");
         }
 
         equipeUsuarioRepository.delete(vinculo);
